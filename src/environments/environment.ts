@@ -3,7 +3,16 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+  firebase: {
+    apiKey: 'AIzaSyD0TcQdvVdlKMmUvIR5OrDOEJ8U_rCFgME',
+    authDomain: 'boletos-dev.firebaseapp.com',
+    databaseURL: 'https://boletos-dev.firebaseio.com',
+    projectId: 'boletos-dev',
+    storageBucket: 'boletos-dev.appspot.com',
+    messagingSenderId: '458777228441'
+  }
 };
 
 /*

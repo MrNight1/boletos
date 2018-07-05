@@ -35,6 +35,12 @@ import {MatAutocompleteModule,
   MatTooltipModule, } from '@angular/material';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
+// For Firebase
+import { AngularFireModule } from 'angularfire2';
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+import { environment } from '../environments/environment';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
@@ -79,7 +85,11 @@ import { LoginComponent } from './login/login.component';
       MatTableModule,
       MatTabsModule,
       MatToolbarModule,
-      MatTooltipModule, ]
+      MatTooltipModule, ],
+
+      AngularFireModule.initializeApp(environment.firebase),
+      AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+      AngularFireAuthModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]
