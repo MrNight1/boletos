@@ -5,11 +5,11 @@
     <form [formGroup]="firstFormGroup" >
       <ng-template matStepLabel>Datos del socio</ng-template>
       <mat-form-field>
-          <input matInput placeholder="ID" formControlName="idCtrl" required>
+          <input matInput placeholder="ID" formControlName="idCtrl" [(ngModel)]="socio.id" required>
         </mat-form-field>
         <br>
         <mat-form-field>
-          <mat-select [(value)]="selectedValue" placeholder="Rango" formControlName="rangoCtrl" required>
+          <mat-select [(value)]="socio.rango" placeholder="Rango" formControlName="rangoCtrl" required>
             <mat-option *ngFor="let rango of rangos" [value]="rango.value">
               {{rango.viewValue}}
             </mat-option>
@@ -29,8 +29,10 @@
       </div>
   </mat-step>
   <mat-step>
-      <ng-template matStepLabel>Listo</ng-template>
-      Has terminado.
+      <ng-template matStepLabel>Confirmación</ng-template>
+      ¿Estás seguro que los datos son correctos?<br>
+      ID: {{socio.id}} <br>
+      Rango: {{socio.rango}}
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>

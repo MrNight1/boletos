@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 
+import { Socio } from '../recursos/socio';
+
 export interface Rango {
   value: string;
   viewValue: string;
@@ -13,7 +15,15 @@ export interface Rango {
 })
 export class LoginComponent implements OnInit {
 
-  selectedValue = 'Centro de negocios';
+  socio: Socio = {
+    id: null,
+    nombre: '',
+    rango: 'Centro de negocios',
+    foto: '',
+    tipo: 'normal',
+    token: ''
+   };
+
   isLinear = true;
   firstFormGroup: FormGroup;
 
