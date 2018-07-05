@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
+import { AuthService } from '../auth.service';
 
 import { Socio } from '../recursos/socio';
 
@@ -46,7 +47,7 @@ export class LoginComponent implements OnInit {
     {value: 'Lider Diamante Ejecutivo' , viewValue: 'Líder Diamante Ejecutivo' }
   ];
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private authService: AuthService) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
@@ -55,8 +56,8 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  loginGoogle() {
-
+  googleLogin(): void {
+    const socioPrueba = this.authService.doGoogleLogin();
   }
 
 }

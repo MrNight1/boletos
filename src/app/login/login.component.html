@@ -22,7 +22,7 @@
   </mat-step>
   <mat-step>
       <ng-template matStepLabel>Unir una cuenta</ng-template>
-      <button mat-raised-button>Iniciar sesión con Google</button>
+      <button mat-raised-button (onclick)="googleLogin()" >Iniciar sesión con Google</button>
       <div>
         <button mat-button matStepperPrevious>Atrás</button>
         <button mat-button matStepperNext>Siguiente</button>
