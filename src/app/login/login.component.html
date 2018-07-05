@@ -1,3 +1,40 @@
-<p>
-  login works!
-</p>
+<p>Works!</p>
+
+<mat-vertical-stepper [linear]="isLinear" #stepper>
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" >
+      <ng-template matStepLabel>Datos del socio</ng-template>
+      <mat-form-field>
+          <input matInput placeholder="ID" formControlName="idCtrl" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+          <mat-select [(value)]="selectedValue" placeholder="Rango" formControlName="rangoCtrl" required>
+            <mat-option *ngFor="let rango of rangos" [value]="rango.value">
+              {{rango.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Unir una cuenta</ng-template>
+      <button mat-raised-button>Iniciar sesión con Google</button>
+      <div>
+        <button mat-button matStepperPrevious>Atrás</button>
+        <button mat-button matStepperNext>Siguiente</button>
+      </div>
+  </mat-step>
+  <mat-step>
+      <ng-template matStepLabel>Listo</ng-template>
+      Has terminado.
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button (click)="stepper.reset()">Reset</button>
+      </div>
+    </mat-step>
+</mat-vertical-stepper>
+
