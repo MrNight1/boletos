@@ -10,17 +10,38 @@ export class AuthService {
 
   constructor(public afAuth: AngularFireAuth) { }
 
-  doGoogleLogin() {
-    return new Promise<any>((resolve, reject) => {
-      const provider = new firebase.auth.GoogleAuthProvider();
-      provider.addScope('profile');
-      provider.addScope('email');
-      this.afAuth.auth
-      .signInWithPopup(provider)
-      .then(res => {
-        resolve(res);
-      });
+  doLoginGoogle(): Socio {
+    const usuario: Socio = {
+      id: null,
+      nombre: '',
+      rango: '',
+      foto: '',
+      tipo: 'normal',
+      token: ''
+    };
+
+    console.log('Login Google ');
+
+    const provider = new firebase.auth.GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
+
+    this.afAuth.auth.signInWithPopup(provider).then(function(result) {
+      // var token = result.credential.accessToken;
+      // var user = result.user;
+      // console.log('user: ', result);
+      usuario.nombre = result.user.displayName;
+      usuario.foto = result.user.photoURL;
+      usuario.token = result.user.uid;
+
+    }).catch(function(error) {
+      // var errorCode = error.code;
+      // var errorMsg = error.message;
+      // var email = error.email;
+      // var credential = error.credential;
     });
+    return usuario;
+
   }
 
   // getSocio(): Socio {

@@ -22,7 +22,8 @@ export class LoginComponent implements OnInit {
   }
 
   googleLogin(): void {
-    const socioPrueba = this.authService.doGoogleLogin();
+    const socioPrueba = this.authService.doLoginGoogle();
+    // console.log('Eres: ', socioPrueba.nombre);
   }
 
 }
