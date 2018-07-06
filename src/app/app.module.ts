@@ -44,6 +44,7 @@ import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 
       AngularFireModule.initializeApp(environment.firebase),
       AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-      AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+      AngularFireAuthModule, AppRoutingModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]

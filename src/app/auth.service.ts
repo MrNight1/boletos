@@ -1,50 +1,44 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 import { Socio } from './recursos/socio';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(public afAuth: AngularFireAuth) { }
+  usuario: Socio = {
+    id: null,
+    nombre: '',
+    rango: '',
+    foto: '',
+    tipo: 'normal',
+    token: ''
+   };
 
-  doLoginGoogle(): Socio {
-    const usuario: Socio = {
-      id: null,
-      nombre: '',
-      rango: '',
-      foto: '',
-      tipo: 'normal',
-      token: ''
-    };
+  constructor(public afAuth: AngularFireAuth, private router: Router, private ngZone: NgZone) { }
 
-    console.log('Login Google ');
+  doLoginGoogle() {
 
     const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
-
-    this.afAuth.auth.signInWithPopup(provider).then(function(result) {
-      // var token = result.credential.accessToken;
-      // var user = result.user;
-      // console.log('user: ', result);
-      usuario.nombre = result.user.displayName;
-      usuario.foto = result.user.photoURL;
-      usuario.token = result.user.uid;
-
-    }).catch(function(error) {
-      // var errorCode = error.code;
-      // var errorMsg = error.message;
-      // var email = error.email;
-      // var credential = error.credential;
-    });
-    return usuario;
-
+    this.afAuth.auth.signInWithPopup(provider).then(
+      (success) => {
+        this.usuario.nombre = success.user.displayName;
+        this.usuario.foto   = success.user.photoURL;
+        this.usuario.token  = success.user.uid;
+        console.log('exito');
+        this.ngZone.run(() => this.router.navigate(['/perfil']));
+      }).catch(
+        (err) => {
+          console.log('fracaso: ', err);
+        // this.error = err;
+      });
   }
 
-  // getSocio(): Socio {
 
-  // }
+  getUsuario(): Socio {
+    return this.usuario;
+  }
 }

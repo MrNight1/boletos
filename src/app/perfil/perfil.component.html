@@ -1,4 +1,4 @@
-<p>Works!</p>
+<p>Hola {{socio.nombre}} </p>
 
 <mat-vertical-stepper [linear]="isLinear" #stepper>
   <mat-step [stepControl]="firstFormGroup">
@@ -21,21 +21,27 @@
     </form>
   </mat-step>
   <mat-step>
-      <ng-template matStepLabel>Unir una cuenta</ng-template>
-
-      <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button matStepperNext>Siguiente</button>
-      </div>
+      <ng-template matStepLabel>Confirmación</ng-template>
+      <p>¿Están correctos tus datos?</p>
+      <mat-card>
+        <img mat-card-image src={{socio.foto}} >
+        <mat-card-header>
+          <mat-card-title>{{socio.nombre}}</mat-card-title>
+          <mat-card-subtitle>{{socio.rango}}</mat-card-subtitle>
+          <mat-card-subtitle>{{socio.id}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions>
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button matStepperNext>Siguiente</button>
+        </mat-card-actions>
+      </mat-card>
   </mat-step>
   <mat-step>
-      <ng-template matStepLabel>Confirmación</ng-template>
-      ¿Estás seguro que los datos son correctos?<br>
-      ID: {{socio.id}} <br>
-      Rango: {{socio.rango}}
+      <ng-template matStepLabel>Guardar</ng-template>
+      <p>¡Hemos terminado!</p>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
+        <button mat-button >Finalizar</button>
       </div>
     </mat-step>
 </mat-vertical-stepper>

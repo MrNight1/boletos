@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, ReactiveFormsModule} from '@angular/forms';
 import { Socio } from '../recursos/socio';
+import { AuthService } from '../auth.service';
 
 export interface Rango {
   value: string;
@@ -16,7 +17,7 @@ export class PerfilComponent implements OnInit {
 
   socio: Socio = {
     id: null,
-    nombre: '',
+    nombre: 'prueba',
     rango: 'Centro de negocios',
     foto: '',
     tipo: 'normal',
@@ -45,13 +46,15 @@ export class PerfilComponent implements OnInit {
     {value: 'Lider Diamante Ejecutivo' , viewValue: 'Líder Diamante Ejecutivo' }
   ];
 
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder, private authService: AuthService) { }
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
       idCtrl: ['', Validators.required],
       rangoCtrl: ['', Validators.required]
     });
+
+    this.socio = this.authService.getUsuario();
   }
 
 }
