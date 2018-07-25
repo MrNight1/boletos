@@ -45,12 +45,16 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AppRoutingModule } from './/app-routing.module';
+import { EventosComponent } from './eventos/eventos.component';
+import { TblPruebaComponent } from './tbl-prueba/tbl-prueba.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    EventosComponent,
+    TblPruebaComponent
   ],
   imports: [
     BrowserModule,
@@ -92,7 +96,7 @@ import { AppRoutingModule } from './/app-routing.module';
 
       AngularFireModule.initializeApp(environment.firebase),
       AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-      AngularFireAuthModule, AppRoutingModule, // imports firebase/auth, only needed for auth features
+      AngularFireAuthModule, AppRoutingModule, MatTableModule, MatPaginatorModule, MatSortModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]

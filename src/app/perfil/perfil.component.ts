@@ -21,7 +21,8 @@ export class PerfilComponent implements OnInit {
     rango: 'Centro de negocios',
     foto: '',
     tipo: 'normal',
-    token: ''
+    token: '',
+    email: ''
    };
 
   isLinear = true;
@@ -54,7 +55,9 @@ export class PerfilComponent implements OnInit {
       rangoCtrl: ['', Validators.required]
     });
 
-    this.socio = this.authService.getUsuario();
+    const myData = this.authService.getUsuario();
+    this.socio.nombre = myData.nombre;
+    console.log('NOMBRE: ', myData);
   }
 
 }

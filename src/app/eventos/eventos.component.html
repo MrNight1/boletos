@@ -1,0 +1,4 @@
+<h2>Eventos</h2>
+<ul>
+  <li *ngFor="let item of eventos" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li>
+</ul>

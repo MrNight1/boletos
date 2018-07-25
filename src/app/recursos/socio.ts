@@ -5,4 +5,6 @@ export class Socio {
   foto: string;
   token: string;
   tipo: string;
+  email: string;
+
 }
