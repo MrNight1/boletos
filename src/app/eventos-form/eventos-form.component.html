@@ -1,0 +1,26 @@
+<div [hidden]="submitted">
+  <form (ngSubmit)="onSubmit()" #eventoForm="ngForm">
+    <mat-form-field>
+        <input matInput placeholder="Nombre evento" name="nombre" [(ngModel)]="model.nombre">
+    </mat-form-field>
+    <br>TODO: remove this: {{model.nombre}}
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" name="fecha" [(ngModel)]="model.fecha">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput type="number" placeholder="Inversion por boleto" min="100" step="50" name="inversion" [(ngModel)]="model.inversion">
+    </mat-form-field><br>
+
+    <button mat-raised-button type="submit" color="primary">Guardar</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
+</div>
+{{diagnostic}}

@@ -48,6 +48,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { EventosComponent } from './eventos/eventos.component';
 import { TblPruebaComponent } from './tbl-prueba/tbl-prueba.component';
 import { EventosDetailComponent } from './eventos-detail/eventos-detail.component';
+import { EventosFormComponent } from './eventos-form/eventos-form.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { EventosDetailComponent } from './eventos-detail/eventos-detail.componen
     PerfilComponent,
     EventosComponent,
     TblPruebaComponent,
-    EventosDetailComponent
+    EventosDetailComponent,
+    EventosFormComponent
   ],
   imports: [
     BrowserModule,
