@@ -2,3 +2,11 @@
 <ul>
   <li *ngFor="let item of eventos" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li>
 </ul>
+
+<div *ngIf="selectedEvent">
+  <h2>{{selectedEvent.nombre | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedEvent.id}}</div>
+  <label>name:
+    <input [(ngModel)]="selectedEvent.nombre" placeholder="name">
+  </label>
+</div>
