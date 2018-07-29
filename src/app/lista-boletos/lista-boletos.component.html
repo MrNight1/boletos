@@ -1,0 +1,28 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+    <!-- Position Column -->
+  <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef> Nombre </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      <td mat-footer-cell *matFooterCellDef> Total </td>
+    </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="noBoletos">
+      <th mat-header-cell *matHeaderCellDef> No. Boletos </th>
+      <td mat-cell *matCellDef="let element"> {{element.noBoletos}} </td>
+      <td mat-footer-cell *matFooterCellDef> 0 </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+  <ng-container matColumnDef="estado">
+      <th mat-header-cell *matHeaderCellDef> Estado </th>
+      <td mat-cell *matCellDef="let element"> {{element.estado}} </td>
+      <td mat-footer-cell *matFooterCellDef>  </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+  <tr mat-footer-row *matFooterRowDef="displayColumns"></tr>
+  </table>
+</div>

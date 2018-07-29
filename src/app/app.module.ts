@@ -49,6 +49,7 @@ import { EventosComponent } from './eventos/eventos.component';
 import { TblPruebaComponent } from './tbl-prueba/tbl-prueba.component';
 import { EventosDetailComponent } from './eventos-detail/eventos-detail.component';
 import { EventosFormComponent } from './eventos-form/eventos-form.component';
+import { ListaBoletosComponent } from './lista-boletos/lista-boletos.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { EventosFormComponent } from './eventos-form/eventos-form.component';
     EventosComponent,
     TblPruebaComponent,
     EventosDetailComponent,
-    EventosFormComponent
+    EventosFormComponent,
+    ListaBoletosComponent
   ],
   imports: [
     BrowserModule,
