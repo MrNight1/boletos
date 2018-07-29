@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../recursos/Evento';
 import { EventoService } from '../services/evento.service';
+import { Observable } from '../../../node_modules/rxjs';
 
 @Component({
   selector: 'app-eventos',
@@ -9,7 +10,7 @@ import { EventoService } from '../services/evento.service';
 })
 
 export class EventosComponent implements OnInit {
-  eventos: Evento[];
+  eventos: Observable<Evento[]>;
   selectedEvent: Evento;
 
   constructor(private eventoService: EventoService) { }
@@ -23,9 +24,7 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos(): void {
-    // this.eventos = this.eventoService.getEventos();
-    this.eventoService.getEventos()
-      .subscribe(eventos => this.eventos = eventos);
+      this.eventos = this.eventoService.getEventos();
   }
 
 }

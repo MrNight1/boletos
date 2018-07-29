@@ -1,5 +1,7 @@
 <h2>Eventos</h2>
+<h3>{{(eventos | async)?.length}}</h3>
 <ul>
-  <li *ngFor="let item of eventos" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li>
+  <!-- li *ngFor="let item of eventos" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li -->
+  <li *ngFor="let item of eventos | async" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li>
 </ul>
 <app-eventos-detail [event]="selectedEvent"></app-eventos-detail>

@@ -21,6 +21,9 @@
 
 <div [hidden]="!submitted">
     <h2>You submitted the following:</h2>
-    <button mat-raised-button color="primary" (click)="onSubmit()">Confirmar</button>
+    <h3>{{model.nombre}}</h3>
+    <p>{{model.fecha}}</p>
+    <p>{{model.inversion}}</p>
+    <button mat-raised-button color="primary" (click)="addEvento()">Confirmar</button>
 </div>
 {{diagnostic}}

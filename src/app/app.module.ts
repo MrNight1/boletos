@@ -100,7 +100,8 @@ import { EventosFormComponent } from './eventos-form/eventos-form.component';
 
       AngularFireModule.initializeApp(environment.firebase),
       AngularFirestoreModule, // imports firebase/firestore, only needed for database features
-      AngularFireAuthModule, AppRoutingModule, MatTableModule, MatPaginatorModule, MatSortModule, // imports firebase/auth, only needed for auth features
+      AngularFireAuthModule, AppRoutingModule,
+      MatTableModule, MatPaginatorModule, MatSortModule, // imports firebase/auth, only needed for auth features
   ],
   providers: [],
   bootstrap: [AppComponent]

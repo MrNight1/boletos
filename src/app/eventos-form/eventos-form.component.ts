@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../recursos/Evento';
+import { EventoService } from '../services/evento.service';
 
 @Component({
   selector: 'app-eventos-form',
@@ -13,12 +14,17 @@ export class EventosFormComponent implements OnInit {
 
   onSubmit() { this.submitted = !this.submitted; }
 
-  constructor() { }
+  constructor(private eventoService: EventoService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
+
+  addEvento() {
+    console.log('Vamos a guardar evento');
+    // const db = firebase.firestore();
+    this.eventoService.addEvento(this.model);
+  }
 
 }
