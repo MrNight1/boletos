@@ -6,6 +6,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.guard';
 import { EventosComponent } from './eventos/eventos.component';
 import { TblPruebaComponent } from './tbl-prueba/tbl-prueba.component';
+import { EventosFormComponent } from './eventos-form/eventos-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'perfil', component: PerfilComponent, canActivate: [AuthGuard]},
   { path: 'eventos', component: EventosComponent},
   { path: 'tabla', component: TblPruebaComponent},
+  { path: 'form', component: EventosFormComponent},
 ];
 
 @NgModule({

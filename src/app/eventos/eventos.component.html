@@ -1,12 +1,19 @@
 <h2>Eventos</h2>
-<ul>
-  <li *ngFor="let item of eventos" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li>
-</ul>
+<h3>{{(eventos | async)?.length}} en total</h3>
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let item of eventos | async">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{item.nombre}}</mat-panel-title>
+      <mat-panel-description>{{item.fecha['seconds'] * 1000 | date:'d/MM/yyyy'}}</mat-panel-description>
+    </mat-expansion-panel-header>
+    {{item.nombre}}<BR>
+    {{item.fecha['seconds'] * 1000 | date:'EEEE, MMMM d, y, h:mm:ss a'}} <br>
+    Inversion del boleto: $ {{item.inversion}}<br>
+    Total de boletos: {{item.totalBoletos}}<br>
+    <mat-action-row>
+      <button mat-button color="primary" (click)="onSelect(item)">Pedir boletos</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
 
-<div *ngIf="selectedEvent">
-  <h2>{{selectedEvent.nombre | uppercase}} Details</h2>
-  <div><span>id: </span>{{selectedEvent.id}}</div>
-  <label>name:
-    <input [(ngModel)]="selectedEvent.nombre" placeholder="name">
-  </label>
-</div>
+<app-eventos-detail [event]="selectedEvent"></app-eventos-detail>

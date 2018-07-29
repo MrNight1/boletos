@@ -1,5 +1,9 @@
 export class Evento {
-  id: string;
-  nombre: string;
-  fecha: string;
+  constructor (
+    public id: string,
+    public nombre: string,
+    public fecha: string,
+    public inversion?: number,
+    public totalBoletos?: number
+  ) { }
 }
