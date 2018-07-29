@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Evento } from '../recursos/Evento';
 import { EventoService } from '../services/evento.service';
-import { Observable } from '../../../node_modules/rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-eventos',
@@ -24,7 +24,7 @@ export class EventosComponent implements OnInit {
   }
 
   getEventos(): void {
-      this.eventos = this.eventoService.getEventos();
+    this.eventos = this.eventoService.getEventos();
   }
 
 }
