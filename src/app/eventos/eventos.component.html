@@ -1,4 +1,5 @@
 <h2>Eventos</h2>
+<h3>{{(eventos | async)?.length}} en total</h3>
 <mat-accordion>
   <mat-expansion-panel *ngFor="let item of eventos | async">
     <mat-expansion-panel-header>
@@ -10,13 +11,9 @@
     Inversion del boleto: $ {{item.inversion}}<br>
     Total de boletos: {{item.totalBoletos}}<br>
     <mat-action-row>
-      <button mat-button color="primary">Pedir boletos</button>
+      <button mat-button color="primary" (click)="onSelect(item)">Pedir boletos</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
-<h3>{{(eventos | async)?.length}}</h3>
-<ul>
-  <!-- li *ngFor="let item of eventos" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li -->
-  <li *ngFor="let item of eventos | async" (click)="onSelect(item)">{{item.id}} {{item.nombre}}</li>
-</ul>
+
 <app-eventos-detail [event]="selectedEvent"></app-eventos-detail>
