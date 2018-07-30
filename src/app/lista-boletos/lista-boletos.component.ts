@@ -26,7 +26,7 @@ export class ListaBoletosComponent implements OnInit {
     );
   }
 
-  getTotalCost() {
+  getTotalBoletos() {
     return this.dataSource.map(t => t.noBoletos).reduce((acc, value) => acc + value, 0);
   }
 

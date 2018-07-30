@@ -43,7 +43,7 @@ const EXAMPLE_DATA: TblPruebaItem[] = [
 export class TblPruebaDataSource extends DataSource<TblPruebaItem> {
   // data: TblPruebaItem[] = EXAMPLE_DATA;
 
-  constructor(private paginator: MatPaginator, private sort: MatSort, private data: TblPruebaItem[]) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, public data: TblPruebaItem[]) {
     super();
     console.log('Recibi: ', this.data);
   }
