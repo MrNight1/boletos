@@ -1,0 +1,24 @@
+<mat-list>
+  <mat-list-item *ngFor="let pago of pagos | async">
+    <img matListAvatar src="http://www.cani.com/sites/default/files/sfondi/sfondi-desktop-cani-366.jpg">
+    <h3 matLine>{{pago.idSocio}}</h3>
+    <p mat-line> {{pago.fecha['seconds'] * 1000 | date:'d/MM/yyyy'}} </p>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+      <span>{{pago.cantidad | currency}} </span>
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>done</mat-icon>
+        <span>Aprobar</span>
+      </button>
+    </mat-menu>
+
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  <mat-list-item>
+    <h2 matLine>TOTAL</h2>
+    <h2 class="example-icon">{{contador | currency}}</h2>
+  </mat-list-item>
+</mat-list>

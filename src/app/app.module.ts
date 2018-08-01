@@ -52,6 +52,7 @@ import { EventosFormComponent } from './eventos-form/eventos-form.component';
 import { ListaBoletosComponent } from './lista-boletos/lista-boletos.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { PagosComponent } from './pagos/pagos.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { FooterComponent } from './footer/footer.component';
     EventosFormComponent,
     ListaBoletosComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    PagosComponent
   ],
   imports: [
     BrowserModule,
