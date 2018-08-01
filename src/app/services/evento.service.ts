@@ -57,4 +57,8 @@ export class EventoService {
 
     return eventos;
   }
+
+  getEvento(id: string): any {
+    return this.db.doc('eventos/' + id).valueChanges();
+  }
 }

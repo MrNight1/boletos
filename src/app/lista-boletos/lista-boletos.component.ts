@@ -21,7 +21,7 @@ export class ListaBoletosComponent implements OnInit {
   displayColumns: string[] = ['nombre', 'noBoletos', 'estado'];
   dataSource: Boleto[] = [];
   ngOnInit() {
-    this.boletosService.getBoletos('Axnp9nlgXLt5g56mgm0y').subscribe(
+    this.boletosService.getBoletos(this.event.id).subscribe(
       (result) => this.dataSource = result
     );
   }
