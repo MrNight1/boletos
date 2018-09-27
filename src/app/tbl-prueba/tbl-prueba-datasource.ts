@@ -7,30 +7,32 @@ import { Observable, of as observableOf, merge } from 'rxjs';
 export interface TblPruebaItem {
   name: string;
   id: number;
+  noBoletos: number;
+  status: string;
 }
 
 // TODO: replace this with real data from your application
 const EXAMPLE_DATA: TblPruebaItem[] = [
-  {id: 1, name: 'Hydrogen'},
-  {id: 2, name: 'Helium'},
-  {id: 3, name: 'Lithium'},
-  {id: 4, name: 'Beryllium'},
-  {id: 5, name: 'Boron'},
-  {id: 6, name: 'Carbon'},
-  {id: 7, name: 'Nitrogen'},
-  {id: 8, name: 'Oxygen'},
-  {id: 9, name: 'Fluorine'},
-  {id: 10, name: 'Neon'},
-  {id: 11, name: 'Sodium'},
-  {id: 12, name: 'Magnesium'},
-  {id: 13, name: 'Aluminum'},
-  {id: 14, name: 'Silicon'},
-  {id: 15, name: 'Phosphorus'},
-  {id: 16, name: 'Sulfur'},
-  {id: 17, name: 'Chlorine'},
-  {id: 18, name: 'Argon'},
-  {id: 19, name: 'Potassium'},
-  {id: 20, name: 'Calcium'},
+  /*{status: 'falta', tickets: 10, id: 1, name: 'Hydrogen'},
+  {status: 'falta', tickets: 10, id: 2, name: 'Helium'},
+  {status: 'falta', tickets: 10, id: 3, name: 'Lithium'},
+  {status: 'falta', tickets: 10, id: 4, name: 'Beryllium'},
+  {status: 'falta', tickets: 10, id: 5, name: 'Boron'},
+  {status: 'falta', tickets: 10, id: 6, name: 'Carbon'},
+  {status: 'falta', tickets: 10, id: 7, name: 'Nitrogen'},
+  {status: 'falta', tickets: 10, id: 8, name: 'Oxygen'},
+  {status: 'falta', tickets: 10, id: 9, name: 'Fluorine'},
+  {status: 'falta', tickets: 10, id: 10, name: 'Neon'},
+  {status: 'falta', tickets: 10, id: 11, name: 'Sodium'},
+  {status: 'falta', tickets: 10, id: 12, name: 'Magnesium'},
+  {status: 'falta', tickets: 10, id: 13, name: 'Aluminum'},
+  {status: 'falta', tickets: 10, id: 14, name: 'Silicon'},
+  {status: 'falta', tickets: 10, id: 15, name: 'Phosphorus'},
+  {status: 'falta', tickets: 10, id: 16, name: 'Sulfur'},
+  {status: 'falta', tickets: 10, id: 17, name: 'Chlorine'},
+  {status: 'falta', tickets: 10, id: 18, name: 'Argon'},
+  {status: 'falta', tickets: 10, id: 19, name: 'Potassium'},
+  {status: 'falta', tickets: 10, id: 20, name: 'Calcium'},*/
 ];
 
 /**
@@ -39,10 +41,11 @@ const EXAMPLE_DATA: TblPruebaItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class TblPruebaDataSource extends DataSource<TblPruebaItem> {
-  data: TblPruebaItem[] = EXAMPLE_DATA;
+  // data: TblPruebaItem[] = EXAMPLE_DATA;
 
-  constructor(private paginator: MatPaginator, private sort: MatSort) {
+  constructor(private paginator: MatPaginator, private sort: MatSort, public data: TblPruebaItem[]) {
     super();
+    console.log('Recibi: ', this.data);
   }
 
   /**

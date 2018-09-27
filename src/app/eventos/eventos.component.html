@@ -11,9 +11,11 @@
     Inversion del boleto: $ {{item.inversion}}<br>
     Total de boletos: {{item.totalBoletos}}<br>
     <mat-action-row>
-      <button mat-button color="primary" (click)="onSelect(item)">Pedir boletos</button>
+      <button mat-button color="primary" (click)="onSelect(item)" routerLink="/eventos/{{item.id}}">Lista de boletos</button>
     </mat-action-row>
   </mat-expansion-panel>
 </mat-accordion>
+<br><br>
 
-<app-eventos-detail [event]="selectedEvent"></app-eventos-detail>
+<!-- app-eventos-detail [event]="selectedEvent"></app-eventos-detail -->
+<!-- app-lista-boletos  [event]="selectedEvent"></app-lista-boletos -->

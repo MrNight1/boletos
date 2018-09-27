@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
-import * as firebase from 'firebase/app';
-import { Evento } from '../recursos/Evento';
+import { AngularFirestore } from 'angularfire2/firestore';
 import { Observable, of } from 'rxjs';
 import {map} from 'rxjs/operators';
-import { AngularFirestore } from 'angularfire2/firestore';
-
+import { Pago } from '../recursos/pago';
 
 @Injectable({
   providedIn: 'root'
 })
-export class EventoService {
+export class PagoService {
 
-  constructor(private db: AngularFirestore) {  }
+  constructor(private db: AngularFirestore) { }
 
-  addEvento(evento: Evento): void {
+  /*addEvento(evento: Evento): void {
     console.log('Agregar evento: ', evento.nombre);
     // For firestore
     const db = firebase.firestore();
@@ -28,10 +26,10 @@ export class EventoService {
     }).then( (docRef) => {
       console.log('Exito al agrega ID: ', docRef.id);
     });
-  }
+  }*/
 
-  getEventos(): Observable<Evento[]> {
-    let eventos: Observable<Evento[]>;
+  getPagos(idEvento: string): Observable<any[]> {
+    let pagos: Observable<any[]>;
 
     // This is one way for getting data without documents id
 
@@ -41,24 +39,20 @@ export class EventoService {
     });*/
 
     // This is another way for getting but it includes id documents
-    eventos = this.db.collection('eventos').snapshotChanges().pipe(map(
+    pagos = this.db.collection('eventos/' + idEvento + '/pagos').snapshotChanges().pipe(map(
       changes => {
         return changes.map( a => {
-          const data = a.payload.doc.data() as Evento;
-          data.id = a.payload.doc.id;
+          const data = a.payload.doc.data() as Pago;
+          data['id'] = a.payload.doc.id;
           return data;
         });
       }
     ));
     // This is the way for operate into an observable when it is not null or empty
-    eventos.subscribe(result => {
+    pagos.subscribe(result => {
       console.log('Array content: ', result);
     });
 
-    return eventos;
-  }
-
-  getEvento(id: string): any {
-    return this.db.doc('eventos/' + id).valueChanges();
+    return pagos;
   }
 }
